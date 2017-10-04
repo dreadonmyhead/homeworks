@@ -1,5 +1,6 @@
 package second;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -16,10 +17,10 @@ public class RunningTestSuite {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
-//    @AfterClass
-//    public static void tearDownClass() {
-//        driver.quit();
-//    }
+    @AfterClass
+    public static void tearDownClass() {
+        driver.quit();
+    }
 
     @Test
     public void testCalculator() {

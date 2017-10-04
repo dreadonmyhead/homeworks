@@ -9,7 +9,6 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
-import java.util.List;
 
 public class RunningPage {
 
@@ -32,19 +31,16 @@ public class RunningPage {
 
     public void insertHours(String hours) {
         WebElement hoursInput = driver.findElement(By.id("hr"));
-        hoursInput.clear();
         hoursInput.sendKeys(hours);
     }
 
     public void insertMinutes(String minutes) {
         WebElement hoursInput = driver.findElement(By.id("min"));
-        hoursInput.clear();
         hoursInput.sendKeys(minutes);
     }
 
     public void insertSeconds(String seconds) {
         WebElement hoursInput = driver.findElement(By.id("sec"));
-        hoursInput.clear();
         hoursInput.sendKeys(seconds);
     }
 
@@ -65,9 +61,8 @@ public class RunningPage {
 
     public void checkMarathonResult(String result) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.not(ExpectedConditions.elementToBeClickable(By.cssSelector("div.loading_spinner"))));
-        WebElement table = driver.findElement(By.cssSelector(".list.detail.eplist"));
-        List<WebElement> allResults = table.findElements(By.cssSelector(".list_item.even"));
-        Assert.assertEquals("Nope, wrong result!", result, allResults.get(0).findElement(By.cssSelector("div.info a")).getText());
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".header")));
+        WebElement marathonResult = driver.findElement(By.xpath("//b[text()='Marathon']/following-sibling::td"));
+        Assert.assertEquals("Nope, wrong result!", result, marathonResult.getText());
     }
 }
