@@ -1,4 +1,4 @@
-package second;
+package fourth;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class RunningTestSuite {
+public class DoWhatYouWantTestSuite {
 
     private final static WebDriver driver = new ChromeDriver();
 
@@ -23,16 +23,8 @@ public class RunningTestSuite {
     }
 
     @Test
-    public void marathonTimeCalculator() {
-        RunningPage page = new RunningPage(driver);
+    public void doWhatYouWantGenerator() {
+        DoWhatYouWantPage page = new DoWhatYouWantPage(driver);
         page.goToPage();
-        page.selectDistance("21100");
-        page.insertHours("1");
-        page.insertMinutes("44");
-        page.insertSeconds("8");
-        page.selectAge("33");
-        page.selectGender("F");
-        page.calculate();
-        page.checkMarathonResult("03:37:17");
     }
 }

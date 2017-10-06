@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class GossipGirlTestSuite {
 
     private final static WebDriver driver = new ChromeDriver();
+    private final static String NAME = "gossip girl";
+    private final static String EPISODE_NAME = "Pilot";
 
     @BeforeClass
     public static void setUpClass() {
@@ -23,13 +25,13 @@ public class GossipGirlTestSuite {
     }
 
     @Test
-    public void testCalculator() {
+    public void gossipGirlFirstEpisodeCheck() {
         GossipGirlPage page = new GossipGirlPage(driver);
         page.goToPage();
-        page.find("gossip girl");
+        page.find(NAME);
         page.clickOnFirstResultPhoto();
         page.clickOnEpisodeGuide();
         page.selectFirstSeason();
-        page.checkTitle("Pilot");
+        page.checkTitle(EPISODE_NAME);
     }
 }

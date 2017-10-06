@@ -25,8 +25,8 @@ public class RunningPage {
     }
 
     public void selectDistance(String distance) {
-        Select season = new Select(driver.findElement(By.name("metres")));
-        season.selectByValue(distance);
+        Select distanceDropdown = new Select(driver.findElement(By.name("metres")));
+        distanceDropdown.selectByValue(distance);
     }
 
     public void insertHours(String hours) {
@@ -35,28 +35,28 @@ public class RunningPage {
     }
 
     public void insertMinutes(String minutes) {
-        WebElement hoursInput = driver.findElement(By.id("min"));
-        hoursInput.sendKeys(minutes);
+        WebElement minutesInput = driver.findElement(By.id("min"));
+        minutesInput.sendKeys(minutes);
     }
 
     public void insertSeconds(String seconds) {
-        WebElement hoursInput = driver.findElement(By.id("sec"));
-        hoursInput.sendKeys(seconds);
+        WebElement secondsInput = driver.findElement(By.id("sec"));
+        secondsInput.sendKeys(seconds);
     }
 
     public void selectAge(String age) {
-        Select competitionDropDown = new Select(driver.findElement(By.name("age")));
-        competitionDropDown.selectByValue(age);
+        Select ageDropDown = new Select(driver.findElement(By.name("age")));
+        ageDropDown.selectByValue(age);
     }
 
     public void selectGender(String gender) {
-        Select competitionDropDown = new Select(driver.findElement(By.name("gender")));
-        competitionDropDown.selectByValue(gender);
+        Select genderDropDown = new Select(driver.findElement(By.name("gender")));
+        genderDropDown.selectByValue(gender);
     }
 
     public void calculate() {
-        WebElement hoursInput = driver.findElement(By.cssSelector("input[name='Submit']"));
-        hoursInput.submit();
+        WebElement calculateButton = driver.findElement(By.cssSelector("input[name='Submit']"));
+        calculateButton.submit();
     }
 
     public void checkMarathonResult(String result) {

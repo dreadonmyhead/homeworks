@@ -26,8 +26,8 @@ public class GossipGirlPage {
     }
 
     public void find(String name) {
-        WebElement firstInput = driver.findElement(By.id("navbar-query"));
-        firstInput.sendKeys(name);
+        WebElement searchInput = driver.findElement(By.id("navbar-query"));
+        searchInput.sendKeys(name);
 
         WebElement searchIcon = driver.findElement(By.id("navbar-submit-button"));
         searchIcon.click();
