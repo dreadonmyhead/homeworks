@@ -26,13 +26,12 @@ public class RunningTestSuite {
     public void marathonTimeCalculator() {
         RunningPage page = new RunningPage(driver);
         page.goToPage();
-        page.selectDistance("21100");
+        page.selectDistance("marathon");
+        page.selectComplitedDistance("half");
         page.insertHours("1");
         page.insertMinutes("44");
         page.insertSeconds("8");
-        page.selectAge("33");
-        page.selectGender("F");
         page.calculate();
-        page.checkMarathonResult("03:37:17");
+        page.checkMarathonResult("3:37:07");
     }
 }

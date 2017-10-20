@@ -21,48 +21,44 @@ public class RunningPage {
     }
 
     public void goToPage() {
-        driver.get("http://www.runningforfitness.org/calc/racepaces/rp");
+        driver.get("https://www.runnersworld.com/tools/race-time-predictor");
     }
 
     public void selectDistance(String distance) {
-        Select distanceDropdown = new Select(driver.findElement(By.name("metres")));
+        Select distanceDropdown = new Select(driver.findElement(By.id("frace")));
         distanceDropdown.selectByValue(distance);
     }
 
+    public void selectComplitedDistance(String complitedDistance) {
+        Select distanceDropdown = new Select(driver.findElement(By.id("r1")));
+        distanceDropdown.selectByValue(complitedDistance);
+    }
+
     public void insertHours(String hours) {
-        WebElement hoursInput = driver.findElement(By.id("hr"));
+        WebElement hoursInput = driver.findElement(By.id("r1t_hours"));
         hoursInput.sendKeys(hours);
     }
 
     public void insertMinutes(String minutes) {
-        WebElement minutesInput = driver.findElement(By.id("min"));
+        WebElement minutesInput = driver.findElement(By.id("r1t_minutes"));
         minutesInput.sendKeys(minutes);
     }
 
     public void insertSeconds(String seconds) {
-        WebElement secondsInput = driver.findElement(By.id("sec"));
+        WebElement secondsInput = driver.findElement(By.id("r1t_seconds"));
         secondsInput.sendKeys(seconds);
     }
 
-    public void selectAge(String age) {
-        Select ageDropDown = new Select(driver.findElement(By.name("age")));
-        ageDropDown.selectByValue(age);
-    }
-
-    public void selectGender(String gender) {
-        Select genderDropDown = new Select(driver.findElement(By.name("gender")));
-        genderDropDown.selectByValue(gender);
-    }
-
     public void calculate() {
-        WebElement calculateButton = driver.findElement(By.cssSelector("input[name='Submit']"));
-        calculateButton.submit();
+        WebElement calculateButton = driver.findElement(By.cssSelector("#rwtoolcalcbtn"));
+        calculateButton.click();
     }
 
     public void checkMarathonResult(String result) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(".header")));
-        WebElement marathonResult = driver.findElement(By.xpath("//b[text()='Marathon']/following-sibling::td"));
-        Assert.assertEquals("Nope, wrong result!", result, marathonResult.getText());
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#rwtoolmsg")));
+        String outputText = driver.findElement(By.cssSelector("#rwtoolmsg")).getText();
+        String marathonResult = outputText.substring(0, outputText.indexOf('.'));
+        Assert.assertEquals("Nope, wrong result!", result, marathonResult.substring(marathonResult.lastIndexOf("is") + 3));
     }
 }
