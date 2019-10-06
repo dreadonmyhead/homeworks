@@ -26,11 +26,9 @@ public class RunningTestSuite {
     public void marathonTimeCalculator() {
         RunningPage page = new RunningPage(driver);
         page.goToPage();
-        page.selectDistance("marathon");
-        page.selectComplitedDistance("half");
-        page.insertHours("1");
-        page.insertMinutes("44");
-        page.insertSeconds("8");
+        page.selectPaceMinutes();
+        page.selectPaceSeconds();
+        page.selectMetrics();
         page.calculate();
         page.checkMarathonResult("3:37:07");
     }
