@@ -4,11 +4,10 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
+import java.util.List;
 
 public class RunningPage {
 
@@ -21,42 +20,34 @@ public class RunningPage {
     }
 
     public void goToPage() {
-        driver.get("https://www.runnersworld.com/tools/race-time-predictor");
+        driver.get("https://www.strava.com/running-pace-calculator");
     }
 
-    public void selectDistance(String distance) {
-        Select distanceDropdown = new Select(driver.findElement(By.id("frace")));
-        distanceDropdown.selectByValue(distance);
+    public void selectPaceMinutes() {
+        Select minutesDropdown = new Select(driver.findElement(By.name("minutes")));
+        minutesDropdown.selectByValue("5");
     }
 
-    public void selectComplitedDistance(String complitedDistance) {
-        Select distanceDropdown = new Select(driver.findElement(By.id("r1")));
-        distanceDropdown.selectByValue(complitedDistance);
+    public void selectPaceSeconds() {
+        Select minutesDropdown = new Select(driver.findElement(By.name("seconds")));
+        minutesDropdown.selectByValue("30");
     }
 
-    public void insertHours(String hours) {
-        WebElement hoursInput = driver.findElement(By.id("r1t_hours"));
-        hoursInput.sendKeys(hours);
-    }
-
-    public void insertMinutes(String minutes) {
-        WebElement minutesInput = driver.findElement(By.id("r1t_minutes"));
-        minutesInput.sendKeys(minutes);
-    }
-
-    public void insertSeconds(String seconds) {
-        WebElement secondsInput = driver.findElement(By.id("r1t_seconds"));
-        secondsInput.sendKeys(seconds);
+    public void selectMetrics() {
+        List<WebElement> radioButtons = driver.findElements(By.cssSelector("input[type=radio]"));
+        for (WebElement radioButton : radioButtons) {
+            if (radioButton.getAttribute("value").equals("metric")) {
+                radioButton.click();
+            }
+        }
     }
 
     public void calculate() {
-        WebElement calculateButton = driver.findElement(By.cssSelector("#rwtoolcalcbtn"));
+        WebElement calculateButton = driver.findElement(By.cssSelector(".btn.btn-primary.mt-sm"));
         calculateButton.click();
     }
 
     public void checkMarathonResult(String result) {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#rwtoolmsg")));
         String outputText = driver.findElement(By.cssSelector("#rwtoolmsg")).getText();
         String marathonResult = outputText.substring(0, outputText.indexOf('.'));
         Assert.assertEquals("Nope, wrong result!", result, marathonResult.substring(marathonResult.lastIndexOf("is") + 3));
