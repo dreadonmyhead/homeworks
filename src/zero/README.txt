@@ -1,5 +1,6 @@
 To fix:
-My most comfortable pace is 5min30sek per kilometer. Am I able to run full Marathon in 3h 47min 7sek result?
+I want to know who was the "Psycho" movie (1960) soundtrack composer. Then I want to listen full audio on youtube.
 
 Homework:
-I have previously run 10 miles in 1h 8min 48 seconds. Am I able to run 4000 meters in 22 minutes?
+I want to know who was the "Mad Max: Fury Road" movie (2015) soundtrack composer. Then I want to listen full audio on
+Soundclound (~3:39min audio will be enough for me).
