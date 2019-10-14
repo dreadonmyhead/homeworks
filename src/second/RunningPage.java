@@ -48,7 +48,7 @@ public class RunningPage {
     }
 
     public void checkMarathonResult(String result) {
-        String outputText = driver.findElement(By.cssSelector("#rwtoolmsg")).getText();
+        String outputText = driver.findElement(By.cssSelector(".highlighted .text-right")).getText();
         String marathonResult = outputText.substring(0, outputText.indexOf('.'));
         Assert.assertEquals("Nope, wrong result!", result, marathonResult.substring(marathonResult.lastIndexOf("is") + 3));
     }
