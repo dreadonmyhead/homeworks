@@ -30,6 +30,6 @@ public class RunningTestSuite {
         page.selectPaceSeconds();
         page.selectMetrics();
         page.calculate();
-        page.checkMarathonResult("3:37:07");
+        page.checkMarathonResult("3:37:07.00");
     }
 }
